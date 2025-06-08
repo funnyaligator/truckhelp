@@ -51,25 +51,28 @@
         }, function(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             results.forEach(place => {
-              // Get phone number via details API
               service.getDetails({ placeId: place.place_id }, (details, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                   const phone = details.formatted_phone_number || "No phone";
+              
+                  // Place the marker
                   const marker = new google.maps.Marker({
                     position: details.geometry.location,
-                    map: map,
-                    title: phone
+                    map: map
                   });
-
+              
+                  // Always-visible label (simulating a label)
                   const info = new google.maps.InfoWindow({
-                    content: `<strong>${details.name}</strong><br>${phone}`
+                    content: `<div style="font-size:14px;"><strong>${details.name}</strong><br>${phone}</div>`,
+                    position: details.geometry.location,
+                    pixelOffset: new google.maps.Size(0, -35) // move label above marker
                   });
-
-                  marker.addListener('click', () => {
-                    info.open(map, marker);
-                  });
+              
+                  info.open(map, marker);
                 }
               });
+              });
+
             });
           }
         });
