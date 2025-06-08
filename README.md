@@ -9,7 +9,6 @@ The app uses the driver's current location and shows nearby services on a map us
 ## 🌐 Live Demo
 
 👉 [Click here to open the app](https://funnyaligator.github.io/truckhelp/)  
-*(Replace `yourusername` with your actual GitHub username)*
 
 ---
 
