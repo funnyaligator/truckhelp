@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Truck Helper</title>
   <style>
     html, body { height: 100%; margin: 0; padding: 0; }
     #map { height: 100%; width: 100%; }
+    /* Меньшая кнопка закрытия InfoWindow */
+    .gm-style-iw > button {
+      width: 16px !important;
+      height: 16px !important;
+      top: 6px !important;
+      right: 6px !important;
+      border-radius: 8px !important;
+      font-size: 12px !important;
+    }
   </style>
 </head>
 <body>
@@ -21,13 +30,11 @@
           lng: position.coords.longitude
         };
 
-        // Create the map
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 14,
           center: userLocation
         });
 
-        // "You are here" marker
         new google.maps.Marker({
           position: userLocation,
           map: map,
@@ -42,7 +49,6 @@
           }
         });
 
-        // Search nearby tire repair services
         const service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: userLocation,
@@ -53,7 +59,9 @@
             results.forEach(place => {
               service.getDetails({ placeId: place.place_id }, (details, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                  const phone = details.formatted_phone_number || "No phone";
+                  const phoneRaw = details.formatted_phone_number || "No phone";
+                  // Очищаем номер для ссылки tel:
+                  const phoneLink = phoneRaw.replace(/[^+\d]/g, '');
 
                   const marker = new google.maps.Marker({
                     position: details.geometry.location,
@@ -61,7 +69,10 @@
                   });
 
                   const info = new google.maps.InfoWindow({
-                    content: `<div style="font-size:14px;"><strong>${details.name}</strong><br>${phone}</div>`
+                    content: `<div style="font-size:14px;">
+                      <strong>${details.name}</strong><br>
+                      <a href="tel:${phoneLink}" style="color:blue; text-decoration:none;">${phoneRaw}</a>
+                    </div>`
                   });
 
                   info.open(map, marker);
@@ -82,7 +93,6 @@
   }
 </script>
 
-<!-- Load Google Maps JavaScript & Places API -->
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl7fmiOdu_8hBFFz_DvGwFODiNiwVTANk&libraries=places&callback=initMap">
 </script>
