@@ -52,8 +52,7 @@
     }
 
     onAdd() {
-      const panes = this.getPanes();
-      panes.floatPane.appendChild(this.container);
+      this.getPanes().floatPane.appendChild(this.container);
     }
 
     draw() {
@@ -89,7 +88,7 @@
         zoom: 14,
       });
 
-      // Your location (big blue circle)
+      // "You are here" (синий круг)
       new google.maps.Marker({
         position: userLocation,
         map: map,
@@ -118,11 +117,6 @@
         results.forEach(place => {
           service.getDetails({ placeId: place.place_id }, (details, status) => {
             if (status !== google.maps.places.PlacesServiceStatus.OK) return;
-
-            new google.maps.Marker({
-              position: details.geometry.location,
-              map: map
-            });
 
             const phone = details.formatted_phone_number || "No phone";
             const phoneHref = phone.replace(/[^+\d]/g, "");
