@@ -14,7 +14,6 @@
 
 <script>
   function initMap() {
-    // Get user's current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         const userLocation = {
@@ -22,20 +21,28 @@
           lng: position.coords.longitude
         };
 
-        // Show map centered on user's location
+        // Create the map
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 14,
           center: userLocation
         });
 
-        // Add marker for user's location
+        // "You are here" marker
         new google.maps.Marker({
           position: userLocation,
           map: map,
-          title: "You are here"
+          title: "You are here",
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 8,
+            fillColor: '#00F',
+            fillOpacity: 1,
+            strokeColor: '#FFF',
+            strokeWeight: 2
+          }
         });
 
-        // Search for nearby services (e.g., tire repair)
+        // Search nearby repair services
         const service = new google.maps.places.PlacesService(map);
         service.nearbySearch({
           location: userLocation,
@@ -44,10 +51,24 @@
         }, function(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             results.forEach(place => {
-              new google.maps.Marker({
-                position: place.geometry.location,
-                map: map,
-                title: place.name
+              // Get phone number via details API
+              service.getDetails({ placeId: place.place_id }, (details, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                  const phone = details.formatted_phone_number || "No phone";
+                  const marker = new google.maps.Marker({
+                    position: details.geometry.location,
+                    map: map,
+                    title: phone
+                  });
+
+                  const info = new google.maps.InfoWindow({
+                    content: `<strong>${details.name}</strong><br>${phone}`
+                  });
+
+                  marker.addListener('click', () => {
+                    info.open(map, marker);
+                  });
+                }
               });
             });
           }
@@ -61,6 +82,7 @@
     }
   }
 </script>
+
 
 <!-- Load Google Maps + Places API -->
 <script async defer
