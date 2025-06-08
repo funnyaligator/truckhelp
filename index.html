@@ -14,76 +14,71 @@
 
 <script>
   function initMap() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        const userLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-        // Create the map
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 14,
-          center: userLocation
-        });
-
-        // "You are here" marker
-        new google.maps.Marker({
-          position: userLocation,
-          map: map,
-          title: "You are here",
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 8,
-            fillColor: '#00F',
-            fillOpacity: 1,
-            strokeColor: '#FFF',
-            strokeWeight: 2
-          }
-        });
-
-        // Search nearby repair services
-        const service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: userLocation,
-          radius: 5000,
-          keyword: "tire repair"
-        }, function(results, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              results.forEach(place => {
-                service.getDetails({ placeId: place.place_id }, (details, status) => {
-                  if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    const phone = details.formatted_phone_number || "No phone";
-                
-                    // Place the marker
-                    const marker = new google.maps.Marker({
-                      position: details.geometry.location,
-                      map: map
-                    });
-                
-                    // Always-visible label (simulating a label)
-                    const info = new google.maps.InfoWindow({
-                      content: `<div style="font-size:14px;"><strong>${details.name}</strong><br>${phone}</div>`,
-                      position: details.geometry.location,
-                      pixelOffset: new google.maps.Size(0, -35) // move label above marker
-                    });
-                
-                    info.open(map, marker);
-                  }
-                });
-              });
-
-            });
-          }
-        });
-
-      }, function(error) {
-        alert("Geolocation failed: " + error.message);
+      // Create the map
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: userLocation
       });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
+
+      // "You are here" marker
+      new google.maps.Marker({
+        position: userLocation,
+        map: map,
+        title: "You are here",
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 8,
+          fillColor: '#00F',
+          fillOpacity: 1,
+          strokeColor: '#FFF',
+          strokeWeight: 2
+        }
+      });
+
+      // Search nearby repair services
+      const service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: userLocation,
+        radius: 5000,
+        keyword: "tire repair"
+      }, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          results.forEach(place => {
+            service.getDetails({ placeId: place.place_id }, (details, status) => {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                const phone = details.formatted_phone_number || "No phone";
+                const marker = new google.maps.Marker({
+                  position: details.geometry.location,
+                  map: map
+                });
+                const info = new google.maps.InfoWindow({
+                  content: `<div style="font-size:14px;"><strong>${details.name}</strong><br>${phone}</div>`,
+                  position: details.geometry.location,
+                  pixelOffset: new google.maps.Size(0, -35)
+                });
+                info.open(map, marker);
+              }
+            });
+          });
+        } else {
+          alert("No nearby repair services found.");
+        }
+      });
+
+    }, function(error) {
+      alert("Geolocation failed: " + error.message);
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
   }
+}
 </script>
 
 
