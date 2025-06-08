@@ -2,25 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Custom Popup Example</title>
+  <title>Truck Helper</title>
   <style>
     html, body, #map {
       height: 100%;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
     }
-    .popup {
+    .popup-bubble {
       position: absolute;
       background: white;
-      border: 1px solid #ccc;
       padding: 6px 10px;
+      border-radius: 6px;
       font-size: 14px;
-      white-space: nowrap;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      border-radius: 4px;
-      pointer-events: none;
-      user-select: none;
       transform: translate(-50%, -100%);
+      pointer-events: none;
+    }
+    .popup-container {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   </style>
 </head>
@@ -29,59 +33,63 @@
 <div id="map"></div>
 
 <script>
-  // Класс кастомного попапа без крестика
   class CustomPopup extends google.maps.OverlayView {
     constructor(position, content, map) {
       super();
       this.position = position;
-      this.content = content;
-      this.div = null;
+
+      const container = document.createElement("div");
+      container.className = "popup-container";
+
+      const bubble = document.createElement("div");
+      bubble.className = "popup-bubble";
+      bubble.innerHTML = content;
+
+      container.appendChild(bubble);
+      this.container = container;
+
       this.setMap(map);
     }
 
     onAdd() {
-      this.div = document.createElement('div');
-      this.div.className = 'popup';
-      this.div.innerHTML = this.content;
-      this.getPanes().floatPane.appendChild(this.div);
+      const panes = this.getPanes();
+      panes.floatPane.appendChild(this.container);
     }
 
     draw() {
       const projection = this.getProjection();
-      if (!projection) return;
       const pos = projection.fromLatLngToDivPixel(this.position);
-      if (pos && this.div) {
-        this.div.style.left = pos.x + 'px';
-        this.div.style.top = pos.y + 'px';
+      if (pos) {
+        this.container.style.left = pos.x + "px";
+        this.container.style.top = pos.y + "px";
       }
     }
 
     onRemove() {
-      if (this.div) {
-        this.div.parentNode.removeChild(this.div);
-        this.div = null;
+      if (this.container.parentNode) {
+        this.container.parentNode.removeChild(this.container);
       }
     }
   }
 
   function initMap() {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by this browser.");
+      alert("Geolocation not supported.");
       return;
     }
 
-    navigator.geolocation.getCurrentPosition(position => {
+    navigator.geolocation.getCurrentPosition((position) => {
       const userLocation = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
 
-      const map = new google.maps.Map(document.getElementById('map'), {
+      const map = new google.maps.Map(document.getElementById("map"), {
         center: userLocation,
-        zoom: 14
+        zoom: 14,
       });
 
-      // Большой маркер "You are here"
+      // Your location (big blue circle)
       new google.maps.Marker({
         position: userLocation,
         map: map,
@@ -99,11 +107,11 @@
       const service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userLocation,
-        radius: 5000,
+        radius: 8000,
         keyword: "truck stop"
       }, (results, status) => {
         if (status !== google.maps.places.PlacesServiceStatus.OK) {
-          alert('No nearby places found.');
+          alert("No truck stops found.");
           return;
         }
 
@@ -116,20 +124,20 @@
               map: map
             });
 
-            const phoneRaw = details.formatted_phone_number || "No phone";
-            const phoneLink = phoneRaw.replace(/[^+\d]/g, '');
+            const phone = details.formatted_phone_number || "No phone";
+            const phoneHref = phone.replace(/[^+\d]/g, "");
 
             new CustomPopup(
               details.geometry.location,
-              `<strong>${details.name}</strong><br><a href="tel:${phoneLink}" style="color:blue; text-decoration:none;">${phoneRaw}</a>`,
+              `<strong>${details.name}</strong><br><a href="tel:${phoneHref}" style="color:blue;text-decoration:none;">${phone}</a>`,
               map
             );
           });
         });
       });
 
-    }, error => {
-      alert("Geolocation failed: " + error.message);
+    }, (error) => {
+      alert("Geolocation error: " + error.message);
     });
   }
 </script>
