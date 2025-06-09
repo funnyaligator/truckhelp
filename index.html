@@ -34,7 +34,7 @@
         zoom: 14,
       });
 
-      // Blue dot for user
+      // Синий круг – ваше местоположение
       new google.maps.Marker({
         position: userLocation,
         map: map,
@@ -53,7 +53,7 @@
       service.nearbySearch({
         location: userLocation,
         radius: 20000,
-        keyword: "tire repair" // Use a solid keyword
+        keyword: "tire repair"
       }, (results, status) => {
         if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) {
           alert("No tire repair services found nearby.");
@@ -67,20 +67,40 @@
             const phone = details.formatted_phone_number || "No phone";
             const phoneHref = phone.replace(/[^+\d]/g, "");
 
-            const marker = new google.maps.Marker({
+            // Маленький маркер — красная точка
+            new google.maps.Marker({
               position: details.geometry.location,
               map: map,
-              label: {
-                text: details.name + "\n" + phone,
-                fontSize: "12px",
-                color: "#000"
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 4,
+                fillColor: '#FF0000',
+                fillOpacity: 1,
+                strokeWeight: 0
               }
             });
 
-            // Optional: click opens call link
-            marker.addListener("click", () => {
-              window.location.href = "tel:" + phoneHref;
+            // "Лейбл" — инфо-окно с фоном
+            const info = new google.maps.InfoWindow({
+              content: `
+                <div style="
+                  background:#fff;
+                  border:1px solid #333;
+                  border-radius:6px;
+                  padding:6px 10px;
+                  font-size:13px;
+                  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+                  white-space: nowrap;
+                ">
+                  <strong>${details.name}</strong><br>
+                  <a href="tel:${phoneHref}" style="color:blue;text-decoration:none;">${phone}</a>
+                </div>
+              `,
+              position: details.geometry.location,
+              pixelOffset: new google.maps.Size(0, -30)
             });
+
+            info.open(map);
           });
         });
       });
@@ -90,6 +110,7 @@
     });
   }
 </script>
+
 
 <!-- Замените YOUR_API_KEY на ваш реальный ключ -->
 <script async defer
