@@ -107,7 +107,7 @@
       const service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userLocation,
-        radius: 20000,
+        radius: 3000,
         keyword: "tire repair"
       }, (results, status) => {
         console.log("NearbySearch status:", status);
