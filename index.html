@@ -16,7 +16,7 @@
       border: 1px solid #333;
       border-radius: 6px;
       padding: 4px 8px;
-      font-size: 13px;
+      font-size: 18px;
       white-space: nowrap;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
@@ -53,7 +53,7 @@
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
           scale: 12,
-          fillColor: '#00F',
+          fillColor: '#0AF',
           fillOpacity: 1,
           strokeColor: '#FFF',
           strokeWeight: 3
@@ -63,8 +63,8 @@
       const service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userLocation,
-        radius: 15000,
-        keyword: "tire repair"
+        radius: 5000,
+        keyword: "tire"
       }, (results, status) => {
         if (status !== google.maps.places.PlacesServiceStatus.OK) return;
 
