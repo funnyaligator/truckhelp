@@ -19,91 +19,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       transform: translate(-50%, -100%);
       pointer-events: none;
-    }
-    .popup-container {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  </style>
-</head>
-<body>
-
-<div id="map"></div>
-
-<script>
-  class CustomPopup extends google.maps.OverlayView {
-    constructor(position, content, map) {
-      super();
-      this.position = position;
-
-      const container = document.createElement("div");
-      container.className = "popup-container";
-
-      const bubble = document.createElement("div");
-      bubble.className = "popup-bubble";
-      bubble.innerHTML = content;
-
-      container.appendChild(bubble);
-      this.container = container;
-
-      this.setMap(map);
-    }
-
-    onAdd() {
-      this.getPanes().floatPane.appendChild(this.container);
-    }
-
-    draw() {
-      const projection = this.getProjection();
-      const pos = projection.fromLatLngToDivPixel(this.position);
-      if (pos) {
-        this.container.style.left = pos.x + "px";
-        this.container.style.top = pos.y + "px";
-      }
-    }
-
-    onRemove() {
-      if (this.container.parentNode) {
-        this.container.parentNode.removeChild(this.container);
-      }
-    }
-  }
-
-  function initMap() {
-    if (!navigator.geolocation) {
-      alert("Geolocation not supported.");
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition((position) => {
-      const userLocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Truck Helper</title>
-  <style>
-    html, body, #map {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    .popup-bubble {
-      position: absolute;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transform: translate(-50%, -100%);
-      pointer-events: none;
       white-space: nowrap;
     }
     .popup-container {
@@ -225,6 +140,7 @@
   }
 </script>
 
+<!-- Замените YOUR_API_KEY на ваш реальный ключ -->
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl7fmiOdu_8hBFFz_DvGwFODiNiwVTANk&libraries=places&callback=initMap">
 </script>
