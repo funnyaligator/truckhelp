@@ -16,7 +16,7 @@
       border: 1px solid #333;
       border-radius: 6px;
       padding: 4px 8px;
-      font-size: 13px;
+      font-size: 18px;
       white-space: nowrap;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       transform-origin: left bottom;
@@ -128,7 +128,7 @@
       // Scale label sizes when zoom changes
       map.addListener("zoom_changed", () => {
         const zoom = map.getZoom();
-        const scale = Math.pow(1.12, zoom - 14); // tweak if needed
+        const scale = Math.pow(1.22, zoom - 13); // tweak if needed
         customLabels.forEach(el => {
           el.style.transform = `scale(${scale})`;
         });
