@@ -10,23 +10,6 @@
       padding: 0;
       font-family: Arial, sans-serif;
     }
-    .popup-bubble {
-      position: absolute;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transform: translate(-50%, -100%);
-      pointer-events: none;
-      white-space: nowrap;
-    }
-    .popup-container {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
   </style>
 </head>
 <body>
@@ -34,44 +17,6 @@
 <div id="map"></div>
 
 <script>
-  class CustomPopup extends google.maps.OverlayView {
-    constructor(position, content, map) {
-      super();
-      this.position = position;
-
-      const container = document.createElement("div");
-      container.className = "popup-container";
-
-      const bubble = document.createElement("div");
-      bubble.className = "popup-bubble";
-      bubble.innerHTML = content;
-
-      container.appendChild(bubble);
-      this.container = container;
-
-      this.setMap(map);
-    }
-
-    onAdd() {
-      this.getPanes().floatPane.appendChild(this.container);
-    }
-
-    draw() {
-      const projection = this.getProjection();
-      const pos = projection.fromLatLngToDivPixel(this.position);
-      if (pos) {
-        this.container.style.left = pos.x + "px";
-        this.container.style.top = pos.y + "px";
-      }
-    }
-
-    onRemove() {
-      if (this.container.parentNode) {
-        this.container.parentNode.removeChild(this.container);
-      }
-    }
-  }
-
   function initMap() {
     if (!navigator.geolocation) {
       alert("Geolocation not supported.");
@@ -89,7 +34,7 @@
         zoom: 14,
       });
 
-      // Синий круг "Вы здесь"
+      // Blue dot for user
       new google.maps.Marker({
         position: userLocation,
         map: map,
@@ -97,7 +42,7 @@
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
           scale: 15,
-          fillColor: '#F00',
+          fillColor: '#00F',
           fillOpacity: 1,
           strokeColor: '#FFF',
           strokeWeight: 3
@@ -107,14 +52,11 @@
       const service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userLocation,
-        radius: 3000,
-        keyword: "tire repair"
+        radius: 20000,
+        keyword: "tire repair" // Use a solid keyword
       }, (results, status) => {
-        console.log("NearbySearch status:", status);
-        console.log("Results:", results);
-
         if (status !== google.maps.places.PlacesServiceStatus.OK || !results.length) {
-          alert("No truck stops found nearby.");
+          alert("No tire repair services found nearby.");
           return;
         }
 
@@ -125,11 +67,20 @@
             const phone = details.formatted_phone_number || "No phone";
             const phoneHref = phone.replace(/[^+\d]/g, "");
 
-            new CustomPopup(
-              details.geometry.location,
-              `<strong>${details.name}</strong><br><a href="tel:${phoneHref}" style="color:blue;text-decoration:none;">${phone}</a>`,
-              map
-            );
+            const marker = new google.maps.Marker({
+              position: details.geometry.location,
+              map: map,
+              label: {
+                text: details.name + "\n" + phone,
+                fontSize: "12px",
+                color: "#000"
+              }
+            });
+
+            // Optional: click opens call link
+            marker.addListener("click", () => {
+              window.location.href = "tel:" + phoneHref;
+            });
           });
         });
       });
