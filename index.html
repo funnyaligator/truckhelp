@@ -16,9 +16,10 @@
       border: 1px solid #333;
       border-radius: 6px;
       padding: 4px 8px;
-      font-size: 18px;
+      font-size: 13px;
       white-space: nowrap;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transform-origin: left bottom;
     }
 
     .custom-label a {
@@ -33,6 +34,7 @@
 
 <script>
   let map;
+  const customLabels = [];
 
   function initMap() {
     navigator.geolocation.getCurrentPosition(position => {
@@ -53,7 +55,7 @@
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
           scale: 12,
-          fillColor: '#0AF',
+          fillColor: '#00F',
           fillOpacity: 1,
           strokeColor: '#FFF',
           strokeWeight: 3
@@ -63,8 +65,8 @@
       const service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userLocation,
-        radius: 5000,
-        keyword: "tire"
+        radius: 15000,
+        keyword: "tire repair"
       }, (results, status) => {
         if (status !== google.maps.places.PlacesServiceStatus.OK) return;
 
@@ -94,6 +96,7 @@
             const labelDiv = document.createElement('div');
             labelDiv.className = 'custom-label';
             labelDiv.innerHTML = `<strong>${name}</strong><br><a href="tel:${phoneHref}">${phone}</a>`;
+            document.body.appendChild(labelDiv); // fallback in case OverlayView fails
 
             const overlay = new google.maps.OverlayView();
             overlay.onAdd = function () {
@@ -117,7 +120,17 @@
             };
 
             overlay.setMap(map);
+            customLabels.push(labelDiv); // track for zoom scaling
           });
+        });
+      });
+
+      // Scale label sizes when zoom changes
+      map.addListener("zoom_changed", () => {
+        const zoom = map.getZoom();
+        const scale = Math.pow(1.12, zoom - 14); // tweak if needed
+        customLabels.forEach(el => {
+          el.style.transform = `scale(${scale})`;
         });
       });
 
