@@ -27,7 +27,7 @@
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--background);
+            background: linear-gradient(180deg, var(--background), #E0F1F5); /* Subtle gradient */
             color: var(--text);
             line-height: 1.6;
         }
@@ -39,12 +39,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-family: 'Harry Potter', sans-serif;                   
+            font-family: 'Harry Potter', sans-serif;
             font-size: 3rem;
             color: var(--accent-green);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         nav ul {
@@ -53,18 +58,23 @@
         }
 
         nav ul li {
-            margin-left: 1rem;
+            margin-left: 1.5rem;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-green);
         }
 
         /* Hero Section */
         .hero {
-            background-image: url('background.png'); /* Replace with your image */
+            background: linear-gradient(rgba(0, 119, 182, 0.8), rgba(0, 119, 182, 0.8)), url('background.png'); /* Keep your image */
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -74,18 +84,46 @@
             align-items: center;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-family: 'Harry Potter', sans-serif;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-in;
         }
 
+        /* Wave Animation */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08C862.14,73.33,933.14,53.67,1004.54,72.05c70.36,18,136.33,33.31,206.8,37.5C1283.66,113.75,1200,0,1200,0H0Z" fill="%230077B6"></path></svg>');
+            background-size: cover;
+            animation: wave 7s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-25%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Button */
         .btn {
             background-color: var(--accent-green);
             color: white;
@@ -93,23 +131,47 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-green);
+        }
+
+        #join .btn {
+            margin-top: 1.5rem; /* Retains spacing from your <br> */
         }
 
         /* Sections */
         section {
-            padding: 2rem;
+            padding: 3rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        section:nth-child(odd) {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
         }
 
         h2 {
+            font-family: 'Harry Potter', sans-serif;
             color: var(--primary-blue);
+            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
 
         ul {
             list-style: disc;
             margin-left: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* Form */
@@ -117,12 +179,22 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         input, textarea {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-blue);
+            outline: none;
         }
 
         button {
@@ -132,6 +204,11 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-green);
         }
 
         /* Footer */
@@ -139,7 +216,7 @@
             background-color: var(--primary-blue);
             color: white;
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem;
         }
 
         footer a {
@@ -163,11 +240,15 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .hero p {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+
+            section {
+                margin: 0.5rem;
             }
         }
     </style>
@@ -191,6 +272,7 @@
         <h1>Drive with Bellatrix</h1>
         <p>Where Drivers Come First</p>
         <a href="#join" class="btn">Join Now</a>
+        <div class="wave"></div>
     </section>
 
     <!-- Join Our Team Section -->
@@ -204,7 +286,6 @@
             <li>We’re open to discuss any additional details, options, and opportunities</li>
         </ul>
         <p>Join a happy company where drivers come first!</p>
-        <br>
         <a href="#join-form" class="btn">Join Now</a>
     </section>
 
@@ -235,7 +316,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
+        <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
     </footer>
 </body>
 </html>
