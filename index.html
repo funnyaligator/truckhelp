@@ -48,7 +48,7 @@
         }
 
         header.scrolled {
-            padding: 0.5rem 1rem; /* Smaller padding when scrolled */
+            padding: 0.5rem 1rem;
             background-color: var(--header-scrolled);
         }
 
@@ -61,8 +61,8 @@
         }
 
         header.scrolled .logo {
-            font-size: 2rem; /* Smaller logo when scrolled */
-            transform: scale(1.1); /* Subtle scale effect */
+            font-size: 2rem;
+            transform: scale(1.1);
         }
 
         nav ul {
@@ -72,7 +72,7 @@
 
         nav ul li {
             margin-left: 1.5rem;
-            position: relative; /* For underline effect */
+            position: relative;
         }
 
         nav ul li a {
@@ -84,14 +84,13 @@
         }
 
         header.scrolled nav ul li a {
-            font-size: 0.9rem; /* Smaller nav links when scrolled */
+            font-size: 0.9rem;
         }
 
         nav ul li a:hover {
             color: var(--accent-green);
         }
 
-        /* Underline animation on hover */
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -270,12 +269,13 @@
             }
 
             nav ul {
-                flex-direction: column;
-                margin-top: 1rem;
+                display: flex; /* Keep horizontal */
+                flex-wrap: wrap; /* Allow wrapping if needed */
+                justify-content: center;
             }
 
             nav ul li {
-                margin: 0.5rem 0;
+                margin: 0 0.5rem; /* Horizontal spacing */
             }
 
             .hero h1 {
