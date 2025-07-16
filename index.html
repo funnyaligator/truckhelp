@@ -27,51 +27,7 @@
 
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(180deg, var(--background), #E0F1F5);
-            color: var(--text
-System: * The user’s message was cut off, but based on the context, they requested two specific changes to the website code: making the header rounded and changing the color of all `<h2>` headings to match the "Bellatrix" logo color (`--accent-green`). The user also previously requested the full code, so I’ll provide the complete updated code with these changes applied, while preserving all existing features (horizontal navigation, sticky header with scroll effects, wave animation, etc.). The response will be concise, focusing on the requested changes and necessary instructions.
-
----
-
-### Updated HTML and CSS Code
-
-Below is the complete code with:
-- **Rounded Header**: Added `border-radius: 10px` to the `header` CSS.
-- **Headings Color**: Changed `<h2>` color to `--accent-green` to match the logo.
-- All other features (horizontal navigation, sticky header, animations, etc.) are unchanged.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-    <title>Bellatrix Trucking - Drive with Us</title>
-    <meta name="description" content="Join Bellatrix Trucking, a flatbed trucking company that cares about its drivers. Operating in most states with flexible compensation options.">
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Colors */
-        :root {
-            --primary-blue: #0077B6;    /* Deep ocean blue */
-            --primary-green: #2A9D8F;   /* Teal green */
-            --accent-blue: #48CAE4;     /* Light blue */
-            --accent-green: #52B788;    /* Light green */
-            --background: #F0F4F8;      /* Light gray-blue */
-            --text: #333;              /* Dark text */
-            --directory-scrolled: #005F8C; /* Darker blue for scrolled header */
-        }
-
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif; /* Added Helvetica as fallback */
             background: linear-gradient(180deg, var(--background), #E0F1F5);
             color: var(--text);
             line-height: 1.6;
@@ -89,17 +45,17 @@ Below is the complete code with:
             top: 0;
             z-index: 100;
             transition: padding 0.3s ease, background-color 0.3s ease;
-            border-radius: 10px; /* Added for rounded corners */
+            border-radius: 10px; /* Rounded corners */
         }
 
         header.scrolled {
             padding: 0.5rem 1rem;
             background-color: var(--header-scrolled);
-            border-radius: 10px; /* Maintain rounded corners when scrolled */
+            border-radius: 10px; /* Maintain rounded corners */
         }
 
         .logo {
-            font-family: 'Harry Potter', sans-serif;
+            font-family: 'Harry Potter', cursive, sans-serif; /* Added cursive and sans-serif as fallbacks */
             font-size: 3rem;
             color: var(--accent-green);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -169,7 +125,7 @@ Below is the complete code with:
         }
 
         .hero h1 {
-            font-family: 'Harry Potter', sans-serif;
+            font-family: 'Harry Potter', cursive, sans-serif;
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: fadeIn 1s ease-in;
@@ -242,8 +198,8 @@ Below is the complete code with:
         }
 
         h2 {
-            font-family: 'Harry Potter', sans-serif;
-            color: var(--accent-green); /* Changed to match logo */
+            font-family: 'Harry Potter', cursive, sans-serif;
+            color: var(--accent-green); /* Matches logo */
             font-size: 2.2rem;
             margin-bottom: 1rem;
         }
@@ -267,7 +223,7 @@ Below is the complete code with:
 
         input, textarea {
             padding: 0.75rem;
-            border: 2px solid #ccc;
+            border: 1px solid #ccc;
             border-radius: 5px;
             transition: border-color 0.3s ease;
         }
@@ -374,7 +330,7 @@ Below is the complete code with:
         <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
         <ul>
             <li>Our dispatch team truly cares about your success and happiness</li>
-            <li>Choose your a compensation: 1099 or W2 options available</li>
+            <li>Choose your compensation: 1099 or W2 options available</li>
             <li>Drive the mileage you desire – we make it work for you</li>
             <li>We’re open to discuss any additional details, options, and opportunities</li>
         </ul>
