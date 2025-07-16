@@ -1,510 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0" 
-  />
-  <title>Bellatrix Trucking – Drive with Us</title>
-  <meta 
-    name="description" 
-    content="Join Bellatrix Trucking, a flatbed trucking company that cares about its drivers. Flexible compensation, coast-to-coast service." 
-  />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+    <title>Bellatrix Trucking - Drive with Us</title>
+    <meta name="description" content="Join Bellatrix Trucking, a flatbed trucking company that cares about its drivers. Operating in most states with flexible compensation options.">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Fonts -->
-  <link 
-    href="https://fonts.cdnfonts.com/css/harry-potter" 
-    rel="stylesheet" 
-  />
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" 
-    rel="stylesheet" 
-  />
+        /* Colors */
+        :root {
+            --primary-blue: #0077B6;    /* Deep ocean blue */
+            --primary-green: #2A9D8F;   /* Teal green */
+            --accent-blue: #48CAE4;     /* Light blue */
+            --accent-green: #52B788;    /* Light green */
+            --background: #F0F4F8;      /* Light gray-blue */
+            --text: #333;              /* Dark text */
+            --header-scrolled: #005F8C; /* Darker blue for scrolled header */
+        }
 
-  <!-- Icons -->
-  <script 
-    src="https://kit.fontawesome.com/a076d05399.js" 
-    crossorigin="anonymous">
-  </script>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, var(--background), #E0F1F5);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-  <style>
-    /* Core Variables */
-    :root {
-      --color-primary: #0077B6;    /* deep ocean blue */
-      --color-secondary: #2A9D8F;  /* teal green */
-      --color-accent: #48CAE4;     /* light blue */
-      --color-light: #F0F4F8;      /* light gray-blue */
-      --color-dark: #333;          /* main text */
-      --spacing: 1.5rem;
-      --max-width: 1200px;
-      --font-logo: 'Harry Potter', sans-serif;
-      --font-body: 'Poppins', sans-serif;
-      --transition: 0.3s ease-in-out;
-    }
+        /* Header */
+        header {
+            background-color: var(--primary-blue);
+            padding: 1.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: padding 0.3s ease, background-color 0.3s ease;
+        }
 
-    /* Reset & Base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: var(--font-body);
-      color: var(--color-dark);
-      background: var(--color-light);
-      line-height: 1.6;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+        header.scrolled {
+            padding: 0.5rem 1rem;
+            background-color: var(--header-scrolled);
+        }
 
-    /* Utility */
-    .container {
-      width: 90%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: var(--spacing) 0;
-    }
-    h2 {
-      font-family: var(--font-logo);
-      color: var(--color-primary);
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-    p, ul {
-      margin-bottom: 1.2rem;
-    }
-    ul {
-      list-style: disc inside;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      border-radius: 5px;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--color-secondary);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--color-accent);
-    }
+        .logo {
+            font-family: 'Harry Potter', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-green);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: font-size 0.3s ease, transform 0.3s ease;
+        }
 
-    /* Header & Nav */
-    header {
-      background: var(--color-primary);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-    }
-    .logo {
-      font-family: var(--font-logo);
-      font-size: 2.8rem;
-      color: var(--color-secondary);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    /* Nav Links */
-    nav {
-      position: relative;
-    }
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav li a {
-      color: #fff;
-      font-weight: 500;
-      position: relative;
-    }
-    nav li a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-secondary);
-      transition: var(--transition);
-    }
-    nav li a:hover::after {
-      width: 100%;
-    }
+        header.scrolled .logo {
+            font-size: 2rem;
+            transform: scale(1.1);
+        }
 
-    /* Hamburger (mobile) */
-    .nav-toggle {
-      display: none;
-    }
-    .nav-toggle-label {
-      display: none;
-      cursor: pointer;
-      width: 30px;
-      height: 24px;
-      position: relative;
-    }
-    .nav-toggle-label span,
-    .nav-toggle-label span::before,
-    .nav-toggle-label span::after {
-      content: '';
-      display: block;
-      background: #fff;
-      height: 4px;
-      border-radius: 2px;
-      position: absolute;
-      transition: var(--transition);
-    }
-    .nav-toggle-label span {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-    }
-    .nav-toggle-label span::before {
-      top: -10px;
-      width: 70%;
-    }
-    .nav-toggle-label span::after {
-      bottom: -10px;
-      width: 50%;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      background:
-        linear-gradient(
-          rgba(0,119,182,0.8),
-          rgba(0,119,182,0.8)
-        ),
-        url('background.png') center/cover no-repeat;
-      height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
-    }
-    .hero h1 {
-      font-family: var(--font-logo);
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      animation: fadeInDown 1s both;
-    }
-    .hero p {
-      font-size: 1.6rem;
-      margin-bottom: 2rem;
-      animation: fadeInDown 1.3s both;
-    }
-    /* Wave */
-    .wave {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100px;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08C862.14,73.33,933.14,53.67,1004.54,72.05c70.36,18,136.33,33.31,206.8,37.5C1283.66,113.75,1200,0,1200,0H0Z" fill="%23FFFFFF"></path></svg>') bottom/cover no-repeat;
-      animation: waveMove 7s linear infinite;
-    }
+        nav ul li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
 
-    /* Sections */
-    section {
-      padding: 4rem 0;
-      background: #fff;
-    }
-    section:nth-of-type(even) {
-      background: var(--color-light);
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .services-item {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 2rem;
-      text-align: center;
-      transition: transform var(--transition);
-    }
-    .services-item:hover {
-      transform: translateY(-8px);
-    }
-    .services-item i {
-      font-size: 2rem;
-      color: var(--color-secondary);
-      margin-bottom: 1rem;
-    }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s ease, font-size 0.3s ease;
+        }
 
-    /* Testimonials */
-    .testimonials {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-gap: 2rem;
-      grid-template-columns: 1fr;
-    }
-    .testimonial {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: relative;
-      font-style: italic;
-    }
-    .testimonial::before {
-      content: '“';
-      font-size: 4rem;
-      color: var(--color-accent);
-      position: absolute;
-      top: -10px;
-      left: 10px;
-    }
-    .testimonial cite {
-      display: block;
-      margin-top: 1rem;
-      text-align: right;
-      font-style: normal;
-      font-weight: 600;
-      color: var(--color-primary);
-    }
+        header.scrolled nav ul li a {
+            font-size: 0.9rem;
+        }
 
-    /* Contact Form */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: var(--font-body);
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--color-primary);
-    }
+        nav ul li a:hover {
+            color: var(--accent-green);
+        }
 
-    /* Footer */
-    footer {
-      background: var(--color-primary);
-      color: #fff;
-      text-align: center;
-      padding: 2rem 0;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: var(--color-secondary);
-    }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-green);
+            transition: width 0.3s ease;
+        }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes waveMove {
-      0% { transform: translateX(0); }
-      50% { transform: translateX(-25%); }
-      100% { transform: translateX(0); }
-    }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      /* Mobile nav toggle */
-      .nav-toggle {
-        display: block;
-      }
-      .nav-toggle-label {
-        display: block;
-      }
-      nav ul {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: var(--color-primary);
-        flex-direction: column;
-        width: 200px;
-        transform: translateX(100%);
-        transition: var(--transition);
-      }
-      .nav-toggle:checked + .nav-toggle-label + nav ul {
-        transform: translateX(0);
-      }
-      nav li {
-        margin: 1rem 0;
-        text-align: center;
-      }
-    }
-  </style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 119, 182, 0.8), rgba(0, 119, 182, 0.8)), url('background.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-family: 'Harry Potter', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        /* Wave Animation */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08C862.14,73.33,933.14,53.67,1004.54,72.05c70.36,18,136.33,33.31,206.8,37.5C1283.66,113.75,1200,0,1200,0H0Z" fill="%230077B6"></path></svg>');
+            background-size: cover;
+            animation: wave 7s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-25%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Button */
+        .btn {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-green);
+        }
+
+        #join .btn {
+            margin-top: 1.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        section:nth-child(odd) {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+        }
+
+        h2 {
+            font-family: 'Harry Potter', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: disc;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+        }
+
+        button {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            header.scrolled {
+                padding: 0.3rem 1rem;
+            }
+
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.4rem;
+            }
+
+            section {
+                margin: 0.5rem;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            header.scrolled .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header>
-    <div class="nav-inner container">
-      <div class="logo">Bellatrix</div>
+    <!-- Header -->
+    <header>
+        <div class="logo">Bellatrix</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </nav>
+    </header>
 
-      <!-- Mobile toggle -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label">
-        <span></span>
-      </label>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Drive with Bellatrix</h1>
+        <p>Where Drivers Come First</p>
+        <a href="#join" class="btn">Join Now</a>
+        <div class="wave"></div>
+    </section>
 
-      <nav>
+    <!-- Join Our Team Section -->
+    <section id="join">
+        <h2>Join Our Team</h2>
+        <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#join">Join</a></li>
-          <li><a href="#contact">Contact</a></li>
+            <li>Our dispatch team truly cares about your success and happiness</li>
+            <li>Choose your compensation: 1099 or W2 options available</li>
+            <li>Drive the mileage you desire – we make it work for you</li>
+            <li>We’re open to discuss any additional details, options, and opportunities</li>
         </ul>
-      </nav>
-    </div>
-  </header>
+        <p>Join a happy company where drivers come first!</p>
+        <a href="#join-form" class="btn">Join Now</a>
+    </section>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>Drive with Bellatrix</h1>
-      <p>Where Drivers Come First</p>
-      <a href="#join" class="btn btn-primary">Join Now</a>
-    </div>
-    <div class="wave"></div>
-  </section>
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>Bellatrix specializes in flatbed trucking, delivering reliable transportation solutions across all states except the far North East and far North West.</p>
+    </section>
 
-  <!-- Join Our Team -->
-  <section id="join">
-    <div class="container">
-      <h2>Join Our Team</h2>
-      <p>We value owner-operators & company drivers. Pick your pay plan, set your routes, and drive your way.</p>
-      <ul>
-        <li>Dispatch that truly cares about your success</li>
-        <li>Choose 1099 or W2—whatever fits you</li>
-        <li>Control your mileage and schedule</li>
-        <li>Open door for any questions or special requests</li>
-      </ul>
-      <a href="#contact" class="btn btn-primary">Get Started</a>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Bellatrix</h2>
+        <p>We’re more than a trucking company – we’re a team that puts drivers first. Our dispatch is dedicated to keeping you happy on the road, and we’re always open to talk about your needs, opportunities, or any details you’d like to explore.</p>
+    </section>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>Flatbed trucking across the continental US, except the far Northeast & Northwest.</p>
-      <div class="services-grid">
-        <div class="services-item">
-          <i class="fas fa-truck-loading"></i>
-          <h3>Flatbed Hauls</h3>
-          <p>Heavy loads, odd shapes, no problem.</p>
-        </div>
-        <div class="services-item">
-          <i class="fas fa-route"></i>
-          <h3>Route Planning</h3>
-          <p>Optimized trips for time & fuel.</p>
-        </div>
-        <div class="services-item">
-          <i class="fas fa-user-shield"></i>
-          <h3>Driver Support</h3>
-          <p>24/7 dispatch & safety.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- Contact Form -->
+    <section id="join-form">
+        <h2>Join Bellatrix Today</h2>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <textarea name="message" placeholder="Your Message (Optional)"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p>By submitting, you agree to our <a href="#">Privacy Policy</a>.</p>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2>About Bellatrix</h2>
-      <p>Bellatrix isn’t just a company. We’re your team on the road—ready to listen, solve problems, and celebrate wins.</p>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
 
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <div class="container">
-      <h2>What Our Drivers Say</h2>
-      <div class="testimonials">
-        <blockquote class="testimonial">
-          Best dispatch I’ve ever worked with. They treat me like family!
-          <cite>— Sarah J., Owner-Operator</cite>
-        </blockquote>
-        <blockquote class="testimonial">
-          Flexibility to choose my miles has changed my life.
-          <cite>— Marcus L., Company Driver</cite>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <form action="#" method="post" class="contact-form" aria-label="Contact Form">
-        <label>
-          Name
-          <input type="text" name="name" placeholder="Your Name" required />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" placeholder="Your Email" required />
-        </label>
-        <label>
-          Phone
-          <input type="tel" name="phone" placeholder="Your Phone Number" required />
-        </label>
-        <label>
-          Message
-          <textarea name="message" placeholder="How can we help?" rows="4"></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <p style="text-align:center; font-size:0.9rem; margin-top:1rem;">
-        By submitting, you agree to our <a href="#">Privacy Policy</a>.
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
-    </div>
-  </footer>
+    <!-- JavaScript for Scroll Effect -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
-```[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/lzh-yi/Web-Fork-/tree/024b3e55587afdf9f05a677613a75f24e3d1803e/03-CSS%E8%BF%9B%E9%98%B6%2F04-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%EF%BC%9F.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/albandev17/prog4pro/tree/00b7f4ac907abda939bba2d0a7742cd9fdea3d50/src%2Fcomponents%2FCreate.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "2")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/mmconroy/todo-app/tree/4e40a28d160d9a2531a5cb1bb6b7b0b73da407a3/src%2Fcomponents%2FHeader.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "3")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/IsaacSarte/ranchpc_upt/tree/2583ec3424f512fb09c6bd7479b066cd438704ea/src%2Fcomponents%2FRanchPCHeader.js?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "4")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/mr-nenye/courier_service/tree/3863d65763bc95a4d8b9131ace0ce86bff60ffa1/carrier%2Fmessages.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "5")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/MarioSeattle/taxitortuguero.com/tree/abe8aca0dc143cd107187b7039ff97a552d4f6dc/spa.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "6")
