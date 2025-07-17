@@ -1,227 +1,129 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <title>Bellatrix Trucking - Drive with Us</title>
+  <title>Bellatrix Transport</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-blue: #0077B6;
-      --primary-green: #2A9D8F;
-      --accent-blue: #48CAE4;
-      --accent-green: #52B788;
-      --background: #F0F4F8;
-      --text: #333;
-      --header-scrolled: #005F8C;
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      --main-green: #2A9D8F;
+      --main-blue: #48CAE4;
+      --bg-light: #f4f4f4;
+      --text-dark: #1b4332;
+    }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, var(--background), #E0F1F5);
-  color: var(--text);
-  line-height: 1.6;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  background-color: var(--primary-blue);
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
 
-header.scrolled {
-  background-color: var(--header-scrolled);
-  padding: 0.5rem 1rem;
-}
+    header {
+      background-color: white;
+      border-radius: 0 0 1rem 1rem;
+      padding: 1rem;
+      margin: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.logo {
-  font-family: 'Harry Potter', sans-serif;
-  font-size: 2.8rem;
-  background: linear-gradient(90deg, #2A9D8F, #52B788, #2A9D8F);
-  background-size: 200% auto;
-  color: white;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 5s linear infinite;
-}
+    .logo-container {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
 
-.logo-sub {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: white;
-  margin-top: -0.3rem;
-}
+    .logo {
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 3rem;
+      background: linear-gradient(145deg, #52B788, #2A9D8F, #0077B6);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s ease infinite;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+    }
 
-@keyframes shimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
+    .sub-logo {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--text-dark);
+    }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+    .slogan {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
 
-nav ul li a {
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  position: relative;
-}
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--accent-green);
-  transition: width 0.3s ease;
-}
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      list-style: none;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
 
-nav ul li a:hover::after {
-  width: 100%;
-}
+    nav a {
+      text-decoration: none;
+      color: var(--main-green);
+      font-weight: bold;
+    }
 
-.hero {
-  height: 60vh;
-  background: linear-gradient(rgba(0, 119, 182, 0.85), rgba(0, 119, 182, 0.85)), url('background.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 2rem;
-  position: relative;
-}
+    section {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
 
-.hero h1 {
-  font-family: 'Harry Potter', sans-serif;
-  font-size: 3rem;
-}
+    h2 {
+      color: var(--main-green);
+      margin-bottom: 0.5rem;
+    }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-.btn {
-  margin-top: 1.5rem;
-  background: var(--accent-green);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-  display: inline-block;
-}
-
-.btn:hover {
-  background: var(--primary-green);
-}
-
-section {
-  padding: 2rem 1rem;
-  margin: 1rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h2 {
-  font-family: 'Harry Potter', sans-serif;
-  color: var(--primary-blue);
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-ul {
-  margin-left: 1.5rem;
-  list-style: disc;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input, textarea {
-  padding: 0.75rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-button {
-  background: var(--primary-green);
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--accent-green);
-}
-
-footer {
-  text-align: center;
-  background: var(--primary-blue);
-  color: white;
-  padding: 1.5rem;
-  margin: 0.5rem;
-  border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  .logo {
-    font-size: 2rem;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-}
-
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--main-green), var(--main-blue));
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <div>
+    <div class="logo-container">
       <div class="logo">Bellatrix</div>
-      <div class="logo-sub">TRANSPORT</div>
+      <div class="sub-logo">TRANSPORT</div>
+      <p class="slogan">Based in Orlando, Florida – where magic happens ✨</p>
     </div>
     <nav>
       <ul>
@@ -231,48 +133,28 @@ footer {
         <li><a href="#join">Join</a></li>
       </ul>
     </nav>
-  </header>  <section id="home" class="hero">
-    <h1>Drive with Bellatrix</h1>
-    <p>Where Drivers Come First</p>
-    <a href="#join" class="btn">Join Now</a>
-  </section>  <section id="join">
-    <h2>Join Our Team</h2>
-    <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
-    <ul>
-      <li>Our dispatch team truly cares about your success and happiness</li>
-      <li>Choose your compensation: 1099 or W2 options available</li>
-      <li>Drive the mileage you desire – we make it work for you</li>
-      <li>We’re open to discuss any additional details, options, and opportunities</li>
-    </ul>
-    <p>Join a happy company where drivers come first!</p>
-    <a href="#join-form" class="btn">Join Now</a>
-  </section>  <section id="services">
+  </header>
+
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>Bellatrix Transport — your gateway to reliable and magical logistics from Florida and beyond.</p>
+  </section>
+
+  <section id="services">
     <h2>Our Services</h2>
-    <p>Bellatrix specializes in flatbed trucking, delivering reliable transportation solutions across all states except the far North East and far North West.</p>
-  </section>  <section id="about">
-    <h2>About Bellatrix</h2>
-    <p>We’re more than a trucking company – we’re a team that puts drivers first. Our dispatch is dedicated to keeping you happy on the road, and we’re always open to talk about your needs, opportunities, or any details you’d like to explore.</p>
-    <p style="margin-top: 1rem; font-style: italic; color: #555;">Based in Orlando, Florida – where magic happens ✨</p>
-  </section>  <section id="join-form">
-    <h2>Join Bellatrix Today</h2>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Your Phone Number" required>
-      <textarea name="message" placeholder="Your Message (Optional)"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">By submitting, you agree to our <a href="#" style="color: var(--accent-green);">Privacy Policy</a>.</p>
-  </section>  <footer>
-    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#" style="color: var(--accent-green);">Privacy Policy</a></p>
-  </footer>  <script>
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script></body>
+    <p>We specialize in expedited freight, local delivery, and long-haul transportation across the U.S.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Founded in Orlando, we combine real-world efficiency with a touch of fantasy. Safety and reliability are our core values.</p>
+  </section>
+
+  <section id="join">
+    <h2>Join the Team</h2>
+    <p>Ready to drive with Bellatrix? Contact us today and start your magical journey.</p>
+    <a class="btn" href="#contact">Apply Now</a>
+  </section>
+</body>
+
 </html>
