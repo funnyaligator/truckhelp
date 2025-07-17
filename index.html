@@ -5,13 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bellatrix Transport</title>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --main-green: #2A9D8F;
       --main-blue: #48CAE4;
       --bg-light: #f4f4f4;
       --text-dark: #1b4332;
+      --accent-green: #2A9D8F;
     }
 
     * {
@@ -33,6 +34,7 @@
       padding: 1rem;
       margin: 0.5rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .logo-container {
@@ -50,12 +52,17 @@
       animation: shimmer 6s ease infinite;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
       letter-spacing: 2px;
+      text-align: center;
     }
 
-    .sub-logo {
+    .logo-sub {
       font-size: 1rem;
       letter-spacing: 2px;
       color: var(--text-dark);
+      text-align: center;
+      font-weight: 600;
+      margin-top: -0.25rem;
+      user-select: none;
     }
 
     .slogan {
@@ -63,15 +70,18 @@
       font-size: 0.9rem;
       color: #555;
       margin-top: 0.25rem;
+      text-align: center;
     }
 
     @keyframes shimmer {
       0% {
         background-position: 0% 50%;
       }
+
       50% {
         background-position: 100% 50%;
       }
+
       100% {
         background-position: 0% 50%;
       }
@@ -90,19 +100,38 @@
       text-decoration: none;
       color: var(--main-green);
       font-weight: bold;
+      padding: 0.25rem 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--main-blue);
     }
 
     section {
       background: white;
       border-radius: 0.75rem;
-      padding: 1rem;
-      margin: 1rem;
+      padding: 1rem 1.5rem;
+      margin: 1rem auto;
+      max-width: 800px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
+    h1,
     h2 {
       color: var(--main-green);
       margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    p,
+    ul {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      list-style-type: disc;
     }
 
     .btn {
@@ -114,10 +143,87 @@
       text-decoration: none;
       font-weight: bold;
       margin-top: 1rem;
+      transition: background 0.3s ease;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, var(--main-blue), var(--main-green));
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--main-green);
+      outline: none;
+    }
+
+    form button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, var(--main-green), var(--main-blue));
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: linear-gradient(to right, var(--main-blue), var(--main-green));
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      margin-top: 2rem;
+      user-select: none;
+    }
+
+    footer a {
+      color: var(--accent-green);
+      text-decoration: none;
+      transition: text-decoration 0.3s ease;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Optional: header shadow on scroll */
+    header.scrolled {
+      background-color: #e0f2f1;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      section {
+        margin: 1rem 0.5rem;
+      }
     }
   </style>
 </head>
-
 
 <body>
   <header>
@@ -137,8 +243,10 @@
 
   <section id="home" class="hero">
     <h1>Drive with Bellatrix</h1>
-    <p>Where Drivers Come First</p>
-    <a href="#join" class="btn">Join Now</a>
+    <p style="text-align:center; margin-bottom:1rem;">Where Drivers Come First</p>
+    <div style="text-align:center;">
+      <a href="#join" class="btn">Join Now</a>
+    </div>
   </section>
 
   <section id="join">
@@ -151,7 +259,9 @@
       <li>We’re open to discuss any additional details, options, and opportunities</li>
     </ul>
     <p>Join a happy company where drivers come first!</p>
-    <a href="#join-form" class="btn">Join Now</a>
+    <div style="text-align:center;">
+      <a href="#join-form" class="btn">Join Now</a>
+    </div>
   </section>
 
   <section id="services">
@@ -168,17 +278,19 @@
   <section id="join-form">
     <h2>Join Bellatrix Today</h2>
     <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Your Phone Number" required>
-      <textarea name="message" placeholder="Your Message (Optional)"></textarea>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Your Phone Number" required />
+      <textarea name="message" placeholder="Your Message (Optional)" rows="4"></textarea>
       <button type="submit">Submit</button>
     </form>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">By submitting, you agree to our <a href="#" style="color: var(--accent-green);">Privacy Policy</a>.</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">
+      By submitting, you agree to our <a href="#">Privacy Policy</a>.
+    </p>
   </section>
 
   <footer>
-    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#" style="color: var(--accent-green);">Privacy Policy</a></p>
+    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
   </footer>
 
   <script>
@@ -192,4 +304,5 @@
     });
   </script>
 </body>
+
 </html>
