@@ -1,224 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join Bellatrix Transport – where drivers come first. Owner-operators and company drivers welcome." />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>Bellatrix Transport</title>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-green: #2A9D8F;
-      --main-blue: #48CAE4;
-      --bg-light: #d8f3f1;
-      --card-bg: #eaf9f8;
-      --text-dark: #083d3a;
-    }
+      --main-green: #2cb8a0;
+      --main-blue: #61d6f0;
+      --bg-dark: #174b4a;
+      --card-bg: #0c3a3a;
+      --text-light: #e3f9f6;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  text-align: center;
+}
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.6;
-      text-align: center;
-    }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
-    header {
-      background-color: var(--card-bg);
-      border-radius: 1rem;
-      padding: 1rem;
-      margin: 1rem auto;
-      max-width: 95%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
+header {
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-    .logo {
-      font-family: 'UnifrakturCook', cursive;
-      font-size: 3.2rem;
-      background: linear-gradient(135deg, #a8edea, #48CAE4, #2A9D8F, #a8edea);
-      background-size: 400% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 2s linear infinite;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-      letter-spacing: 2px;
-    }
+.logo {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #a8edea, #48CAE4, #2A9D8F, #a8edea);
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s linear infinite;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+}
 
-    .logo-sub {
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      color: var(--text-dark);
-    }
+.logo-sub {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--text-light);
+}
 
-    nav ul {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      list-style: none;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-      padding-left: 0;
-    }
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-left: 0;
+}
 
-    nav a {
-      text-decoration: none;
-      color: var(--main-green);
-      font-weight: bold;
-      font-size: 1.05rem;
-    }
+nav a {
+  text-decoration: none;
+  color: var(--main-blue);
+  font-weight: bold;
+  font-size: 1.05rem;
+}
 
-    section {
-      background: var(--card-bg);
-      border-radius: 1rem;
-      padding: 2rem;
-      margin: 1rem auto;
-      max-width: 95%;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+section {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s;
+  opacity: 0;
+  transform: translateY(40px);
+}
 
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+section.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .hero {
-      background: url('background.png') center/cover no-repeat;
-      color: white;
-      text-shadow: 1px 1px 2px #000;
-    }
+.hero {
+  background: url('background.png') center/cover no-repeat;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000;
+}
 
-    h1, h2 {
-      font-family: 'UnifrakturCook', cursive;
-      color: var(--main-green);
-      margin-bottom: 0.5rem;
-    }
+h1, h2 {
+  font-family: 'UnifrakturCook', cursive;
+  color: #a8edea;
+  margin-bottom: 0.5rem;
+}
 
-    .btn {
-      display: inline-block;
-      background: linear-gradient(to right, var(--main-green), var(--main-blue));
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
+.btn, button[type="submit"] {
+  display: inline-block;
+  background: linear-gradient(to right, var(--main-green), var(--main-blue));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-    input, textarea, button {
-      display: block;
-      width: 100%;
-      margin-top: 0.75rem;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      border: none;
-      font-family: inherit;
-      font-size: 1rem;
-    }
+.btn:hover, button[type="submit"]:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-    }
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-family: inherit;
+}
 
-    @keyframes shimmer {
-      0% {
-        background-position: 0% 50%;
-      }
-      100% {
-        background-position: 100% 50%;
-      }
-    }
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #aadbd7;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
   </style>
-</head>
+</head><body>
+  <div class="container">
+    <header>
+      <div class="logo">Bellatrix</div>
+      <div class="logo-sub">TRANSPORT</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#join">Join</a></li>
+        </ul>
+      </nav>
+    </header><section id="home" class="hero">
+  <h1>Drive with Bellatrix</h1>
+  <p>Where Drivers Come First</p>
+  <a href="#join" class="btn">Join Now</a>
+</section>
 
-<body>
-  <header>
-    <div class="logo">Bellatrix</div>
-    <div class="logo-sub">TRANSPORT</div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#join">Join</a></li>
-      </ul>
-    </nav>
-  </header>
+<section id="join">
+  <h2>Join Our Team</h2>
+  <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
+  <ul>
+    <li>Our dispatch team truly cares about your success and happiness</li>
+    <li>Choose your compensation: 1099 or W2 options available</li>
+    <li>Drive the mileage you desire – we make it work for you</li>
+    <li>We’re open to discuss any additional details, options, and opportunities</li>
+  </ul>
+  <p>Join a happy company where drivers come first!</p>
+  <a href="#join-form" class="btn">Join Now</a>
+</section>
 
-  <section id="home" class="hero">
-    <h1>Drive with Bellatrix</h1>
-    <p>Where Drivers Come First</p>
-    <a href="#join" class="btn">Join Now</a>
-  </section>
+<section id="services">
+  <h2>Our Services</h2>
+  <p>Bellatrix specializes in flatbed trucking, delivering reliable transportation solutions across all states except the far North East and far North West.</p>
+</section>
 
-  <section id="join">
-    <h2>Join Our Team</h2>
-    <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
-    <ul style="text-align:left; max-width:600px; margin: 1rem auto;">
-      <li>✓ Our dispatch team truly cares about your success and happiness</li>
-      <li>✓ Choose your compensation: 1099 or W2 options available</li>
-      <li>✓ Drive the mileage you desire – we make it work for you</li>
-      <li>✓ We’re open to discuss any additional details, options, and opportunities</li>
-    </ul>
-    <p>Join a happy company where drivers come first!</p>
-    <a href="#join-form" class="btn">Join Now</a>
-  </section>
+<section id="about">
+  <h2>About Bellatrix</h2>
+  <p>We’re more than a trucking company – we’re a team that puts drivers first. Our dispatch is dedicated to keeping you happy on the road, and we’re always open to talk about your needs, opportunities, or any details you’d like to explore.</p>
+  <p style="margin-top: 1rem; font-style: italic; color: #aadbd7;">Based in Orlando, Florida – where magic happens ✨</p>
+</section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <p>Bellatrix specializes in flatbed trucking, delivering reliable transportation solutions across all states except the far North East and far North West.</p>
-  </section>
+<section id="join-form">
+  <h2>Join Bellatrix Today</h2>
+  <form action="#" method="post">
+    <input type="text" name="name" placeholder="E.g. John Smith" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+    <textarea name="message" placeholder="Tell us what matters most to you…"></textarea>
+    <button type="submit" onclick="this.innerText='Sending...'; setTimeout(()=>this.innerText='Submit', 2000)">Submit</button>
+  </form>
+  <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">By submitting, you agree to our <a href="#" style="color: #88c9c4;">Privacy Policy</a>.</p>
+</section>
 
-  <section id="about">
-    <h2>About Bellatrix</h2>
-    <p>We’re more than a trucking company – we’re a team that puts drivers first. Our dispatch is dedicated to keeping you happy on the road, and we’re always open to talk about your needs, opportunities, or any details you’d like to explore.</p>
-    <p style="margin-top: 1rem; font-style: italic; color: #347c78;">Based in Orlando, Florida – where magic happens ✨</p>
-  </section>
+<footer>
+  <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#" style="color: #88c9c4;">Privacy Policy</a></p>
+</footer>
 
-  <section id="join-form">
-    <h2>Join Bellatrix Today</h2>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Your Phone Number" required>
-      <textarea name="message" placeholder="Your Message (Optional)"></textarea>
-      <button type="submit" class="btn" onclick="this.innerText='Sending...'; setTimeout(()=>this.innerText='Submit', 2000)">Submit</button>
-    </form>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color: #555;">By submitting, you agree to our <a href="#" style="color: var(--main-blue);">Privacy Policy</a>.</p>
-  </section>
-
-  <footer>
-    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#" style="color: var(--main-green);">Privacy Policy</a></p>
-  </footer>
-
-  <script>
-    // Animate sections on scroll
+  </div>  <script>
     const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+          entry.target.classList.add("reveal");
         }
       });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => {
-      observer.observe(section);
+    }, {
+      threshold: 0.1
     });
-  </script>
-</body>
-</html>
+
+    sections.forEach(section => observer.observe(section));
+  </script></body></html>
