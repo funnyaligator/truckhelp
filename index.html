@@ -2,209 +2,252 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet" />
-  <title>Bellatrix Trucking - Drive with Us</title>
-  <meta name="description" content="Join Bellatrix Trucking, a flatbed trucking company that cares about its drivers. Operating in most states with flexible compensation options.">
+  <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
+  <title>Bellatrix Trucking</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }:root {
-  --primary-blue: #0077B6;
-  --primary-green: #2A9D8F;
-  --accent-blue: #48CAE4;
-  --accent-green: #52B788;
-  --background: #F0F4F8;
-  --text: #333;
-  --header-scrolled: #005F8C;
-}
-
-html {
-  scroll-behavior: smooth;
+    :root {
+      --blue: #0077B6;
+      --teal: #2A9D8F;
+      --light-teal: #52B788;
+      --soft-bg: #F0F4F8;
+      --text: #222;
+    }* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, var(--background), #E0F1F5);
+  background: linear-gradient(to bottom, #F0F4F8, #e0f1f5);
   color: var(--text);
   line-height: 1.6;
 }
 
-@keyframes gradientText {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 header {
-  background-color: var(--primary-blue);
-  padding: 1.5rem 2rem;
-  margin: 1rem;
+  background: var(--blue);
+  padding: 1rem 1.5rem;
+  margin: 0.5rem;
   border-radius: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 header.scrolled {
-  padding: 0.75rem 2rem;
-  background-color: var(--header-scrolled);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: #005F8C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
   font-family: 'Harry Potter', sans-serif;
-  font-size: 3rem;
-  background: linear-gradient(90deg, #2A9D8F, #52B788, #48CAE4);
-  background-size: 200% 200%;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, var(--teal), var(--light-teal), var(--blue));
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientText 5s ease infinite;
+  color: var(--teal); /* fallback */
+  animation: shimmer 5s ease-in-out infinite;
 }
 
-header.scrolled .logo {
-  font-size: 2rem;
-  transform: scale(1.1);
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 nav ul {
   list-style: none;
   display: flex;
-}
-
-nav ul li {
-  margin-left: 1.5rem;
-  position: relative;
+  gap: 1rem;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: color 0.3s ease, font-size 0.3s ease;
-}
-
-header.scrolled nav ul li a {
-  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
-  color: var(--accent-green);
-}
-
-nav ul li a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: var(--accent-green);
-  transition: width 0.3s ease;
-}
-
-nav ul li a:hover::after {
-  width: 100%;
+  color: var(--light-teal);
 }
 
 .hero {
-  background: linear-gradient(rgba(0, 119, 182, 0.8), rgba(0, 119, 182, 0.8)), url('background.png');
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  padding: 4rem 1rem 3rem;
+  background: linear-gradient(rgba(0,119,182,0.8), rgba(42,157,143,0.8)), url('background.png') center/cover no-repeat;
   color: white;
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
+  border-radius: 1rem;
   margin: 1rem;
-  animation: fadeIn 1s ease forwards;
 }
 
 .hero h1 {
   font-family: 'Harry Potter', sans-serif;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .hero p {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
-
-.wave {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08C862.14,73.33,933.14,53.67,1004.54,72.05c70.36,18,136.33,33.31,206.8,37.5C1283.66,113.75,1200,0,1200,0H0Z" fill="%230077B6"></path></svg>');
-  background-size: cover;
-  animation: wave 7s linear infinite;
-}
-
-section {
-  padding: 3rem 1rem;
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.8s ease forwards;
-}
-
-h2 {
-  font-family: 'Harry Potter', sans-serif;
-  color: var(--primary-blue);
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .btn {
-  background-color: var(--accent-green);
+  background: var(--light-teal);
   color: white;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  font-weight: bold;
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
   display: inline-block;
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  background-color: var(--primary-green);
+  background: var(--teal);
 }
 
-form, input, textarea, button {
-  border-radius: 8px;
+section {
+  margin: 1rem;
+  background: white;
+  padding: 2rem 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-family: 'Harry Potter', sans-serif;
+  color: var(--blue);
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  margin-left: 1.2rem;
+  list-style: disc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--blue);
+  outline: none;
 }
 
 footer {
-  margin: 1rem;
-  border-radius: 12px;
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--blue);
+  color: white;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+
+footer a {
+  color: var(--light-teal);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
 }
 
   </style>
 </head>
 <body>
-  <!-- остальная часть HTML остаётся без изменений -->
-</body>
+  <header>
+    <div class="logo">Bellatrix</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#join">Join</a></li>
+      </ul>
+    </nav>
+  </header>  <section id="home" class="hero">
+    <h1>Drive with Bellatrix</h1>
+    <p>Where Drivers Come First</p>
+    <a href="#join" class="btn">Join Now</a>
+  </section>  <section id="join">
+    <h2>Join Our Team</h2>
+    <p>Looking for a trucking company that values you? Bellatrix is the place for owner-operators and company drivers alike. Here’s why:</p>
+    <ul>
+      <li>Dispatch that actually cares</li>
+      <li>Flexible compensation: 1099 or W2</li>
+      <li>Mileage freedom</li>
+      <li>Open communication</li>
+    </ul>
+  </section>  <section id="services">
+    <h2>Our Services</h2>
+    <p>Flatbed trucking across almost all states — except the far northeast and northwest.</p>
+  </section>  <section id="about">
+    <h2>About Bellatrix</h2>
+    <p>We’re more than a company — we’re a crew. Our dispatch puts drivers first, always ready to talk and help.</p>
+  </section>  <section id="join-form">
+    <h2>Join Bellatrix Today</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number" required>
+      <textarea name="message" placeholder="Your Message (Optional)"></textarea>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <p>By submitting, you agree to our <a href="#">Privacy Policy</a>.</p>
+  </section>  <footer>
+    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
+  </footer>  <script>
+    // Scroll styling effect for header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Section fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+  </script></body>
 </html>
