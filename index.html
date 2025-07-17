@@ -1,20 +1,15 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bellatrix Transport</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ocean-dark: #013440;
-      --ocean-light: #68c0c9;
-      --ocean-mid: #0e7c86;
-      --ocean-bg: #06414f;
-      --tile-bg: #1f5a5a;
-      --text-light: #e0f7f9;
-      --text-dark: #083a3a;
-      --btn-gradient-start: #0e7c86;
-      --btn-gradient-end: #68c0c9;
+      --main-green: #2A9D8F;
+      --main-blue: #48CAE4;
+      --bg-dark: #042f2e;
+      --card-bg: #0d3b3a;
+      --text-light: #e0f7f1;
     }* {
   margin: 0;
   padding: 0;
@@ -27,201 +22,115 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--ocean-bg);
+  background-color: var(--bg-dark);
   color: var(--text-light);
   line-height: 1.6;
-  min-height: 100vh;
 }
 
 header {
-  background-color: var(--ocean-dark);
-  border-radius: 0 0 1rem 1rem;
-  padding: 1rem 2rem;
-  margin: 0.5rem 1rem 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+.logo-container {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
 .logo {
   font-family: 'UnifrakturCook', cursive;
   font-size: 3rem;
-  background: linear-gradient(135deg, #00f0ff, #52b788, #0077b6, #00f0ff);
+  background: linear-gradient(135deg, #a8edea, #48CAE4, #2A9D8F, #a8edea);
   background-size: 400% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 3s linear infinite;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
-  text-align: center;
 }
 
 .logo-sub {
   font-size: 1.1rem;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   color: var(--text-light);
-  font-weight: 600;
-  margin-top: -0.25rem;
-  user-select: none;
   text-align: center;
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  flex-wrap: nowrap;
-  gap: 2rem;
-  align-items: center;
-  overflow-x: auto;
-  padding: 0;
-  margin: 0;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 nav a {
-  color: var(--ocean-light);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.25rem 0.5rem;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: var(--btn-gradient-end);
-  text-decoration: underline;
+  color: var(--main-blue);
+  font-weight: bold;
+  font-size: 1.05rem;
 }
 
 section {
-  background-color: var(--tile-bg);
+  background: var(--card-bg);
   border-radius: 1rem;
-  padding: 1.5rem 2rem;
-  margin: 1rem auto;
-  max-width: 800px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-  color: var(--text-light);
+  padding: 1.5rem;
+  margin: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 section:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
-#home {
+.hero {
   background: url('background.png') center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
-}
-
-#home::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(1, 52, 64, 0.6);
-  z-index: 0;
-}
-
-#home > * {
-  position: relative;
-  z-index: 1;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000;
   text-align: center;
 }
 
-h1,
-h2 {
-  color: var(--btn-gradient-end);
-  margin-bottom: 0.7rem;
-  text-align: center;
-}
-
-p,
-ul {
-  margin-bottom: 1rem;
-}
-
-ul {
-  padding-left: 1.4rem;
-  list-style-type: disc;
+h1, h2 {
+  font-family: 'UnifrakturCook', cursive;
+  color: #a8edea;
+  margin-bottom: 0.5rem;
 }
 
 .btn {
   display: inline-block;
-  background: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
+  background: linear-gradient(to right, var(--main-green), var(--main-blue));
   color: white;
   padding: 0.75rem 1.5rem;
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: bold;
   margin-top: 1rem;
-  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background: linear-gradient(to right, var(--btn-gradient-end), var(--btn-gradient-start));
-}
-
-form input,
-form textarea {
+input, textarea, button {
+  display: block;
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  border: 1px solid var(--ocean-light);
+  margin-top: 0.75rem;
+  padding: 0.75rem;
   border-radius: 0.5rem;
-  background-color: var(--ocean-bg);
-  color: var(--text-light);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  resize: vertical;
-}
-
-form input:focus,
-form textarea:focus {
-  border-color: var(--btn-gradient-end);
-  outline: none;
-  background-color: var(--tile-bg);
-}
-
-form button {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(to right, var(--btn-gradient-start), var(--btn-gradient-end));
-  color: white;
   border: none;
-  border-radius: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form button:hover {
-  background: linear-gradient(to right, var(--btn-gradient-end), var(--btn-gradient-start));
+  font-family: inherit;
 }
 
 footer {
   text-align: center;
-  padding: 1rem 1rem 2rem;
+  padding: 1rem;
   font-size: 0.9rem;
-  color: var(--text-light);
-  margin-top: 2rem;
-  background-color: var(--ocean-dark);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-footer a {
-  color: var(--btn-gradient-end);
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
+  color: #88c9c4;
 }
 
 @keyframes shimmer {
@@ -233,42 +142,22 @@ footer a:hover {
   }
 }
 
-@media (max-width: 480px) {
-  nav a {
-    font-size: 0.9rem;
-    padding: 0.2rem 0.3rem;
-  }
-
-  nav ul {
-    gap: 1rem;
-    justify-content: space-around;
-  }
-
-  .logo {
-    font-size: 2.2rem;
-  }
-
-  .logo-sub {
-    font-size: 0.9rem;
-  }
-}
-
   </style>
 </head><body>
   <header>
-    <div>
+    <div class="logo-container">
       <div class="logo">Bellatrix</div>
       <div class="logo-sub">TRANSPORT</div>
     </div>
     <nav>
       <ul>
-        <li><a href="#home">🏠 Home</a></li>
-        <li><a href="#services">🚚 Services</a></li>
-        <li><a href="#about">ℹ️ About</a></li>
-        <li><a href="#join">📝 Join</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#join">Join</a></li>
       </ul>
     </nav>
-  </header>  <section id="home">
+  </header>  <section id="home" class="hero">
     <h1>Drive with Bellatrix</h1>
     <p>Where Drivers Come First</p>
     <a href="#join" class="btn">Join Now</a>
@@ -281,6 +170,7 @@ footer a:hover {
       <li>Drive the mileage you desire – we make it work for you</li>
       <li>We’re open to discuss any additional details, options, and opportunities</li>
     </ul>
+    <p>Join a happy company where drivers come first!</p>
     <a href="#join-form" class="btn">Join Now</a>
   </section>  <section id="services">
     <h2>Our Services</h2>
@@ -288,20 +178,18 @@ footer a:hover {
   </section>  <section id="about">
     <h2>About Bellatrix</h2>
     <p>We’re more than a trucking company – we’re a team that puts drivers first. Our dispatch is dedicated to keeping you happy on the road, and we’re always open to talk about your needs, opportunities, or any details you’d like to explore.</p>
-    <p style="margin-top: 1rem; font-style: italic; color: #a0c9cd;">Based in Orlando, Florida – where magic happens ✨</p>
+    <p style="margin-top: 1rem; font-style: italic; color: #aadbd7;">Based in Orlando, Florida – where magic happens ✨</p>
   </section>  <section id="join-form">
     <h2>Join Bellatrix Today</h2>
     <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="tel" name="phone" placeholder="Your Phone Number" required />
-      <textarea name="message" placeholder="Your Message (Optional)" rows="4"></textarea>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number" required>
+      <textarea name="message" placeholder="Your Message (Optional)"></textarea>
       <button type="submit" onclick="this.innerText='Sending...'; setTimeout(()=>this.innerText='Submit', 2000)">Submit</button>
     </form>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">
-      By submitting, you agree to our <a href="#">Privacy Policy</a>.
-    </p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">By submitting, you agree to our <a href="#" style="color: #88c9c4;">Privacy Policy</a>.</p>
   </section>  <footer>
-    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#">Privacy Policy</a></p>
+    <p>© 2025 Bellatrix Trucking. All rights reserved. <a href="#" style="color: #88c9c4;">Privacy Policy</a></p>
   </footer>
 </body></html>
