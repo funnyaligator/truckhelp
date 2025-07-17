@@ -227,6 +227,29 @@
         margin: 1rem 0.5rem;
         padding: 1rem 1rem;
       }
+      #home {
+  background: url('background.png') center/cover no-repeat;
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  color: var(--text-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(1, 52, 64, 0.6); /* затемнённый полупрозрачный слой */
+  z-index: 0;
+}
+
+#home > * {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
     }
   </style>
 </head>
