@@ -1,17 +1,17 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Join Bellatrix Transport – where drivers come first. Owner-operators and company drivers welcome." />
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>Bellatrix Transport</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Join Bellatrix Transport – where drivers come first. Owner-operators and company drivers welcome.">
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --main-green: #2cb8a0;
-      --main-blue: #61d6f0;
-      --bg-dark: #174b4a;
-      --card-bg: #0c3a3a;
-      --text-light: #e3f9f6;
+      --main-green: #2A9D8F;
+      --main-blue: #48CAE4;
+      --bg-dark: #2c5c5a;
+      --card-bg: #1e4947;
+      --text-light: #e0f7f1;
     }* {
   margin: 0;
   padding: 0;
@@ -28,6 +28,7 @@ body {
   color: var(--text-light);
   line-height: 1.6;
   text-align: center;
+  font-size: 15px;
 }
 
 .container {
@@ -40,7 +41,7 @@ header {
   background-color: var(--card-bg);
   border-radius: 1rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
@@ -51,15 +52,17 @@ header {
   background-size: 400% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 2s linear infinite;
+  animation: shimmer 2.5s linear infinite;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .logo-sub {
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 2px;
   color: var(--text-light);
+  text-align: center;
 }
 
 nav ul {
@@ -76,16 +79,16 @@ nav a {
   text-decoration: none;
   color: var(--main-blue);
   font-weight: bold;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
 }
 
 section {
   background: var(--card-bg);
   border-radius: 1rem;
   padding: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 1rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -105,9 +108,10 @@ h1, h2 {
   font-family: 'UnifrakturCook', cursive;
   color: #a8edea;
   margin-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
-.btn, button[type="submit"] {
+.btn, button {
   display: inline-block;
   background: linear-gradient(to right, var(--main-green), var(--main-blue));
   color: white;
@@ -116,12 +120,12 @@ h1, h2 {
   text-decoration: none;
   font-weight: bold;
   margin-top: 1rem;
-  border: none;
+  font-size: 1rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.btn:hover, button[type="submit"]:hover {
+.btn:hover {
   opacity: 0.85;
   transform: scale(1.02);
 }
@@ -134,13 +138,14 @@ input, textarea {
   border-radius: 0.5rem;
   border: none;
   font-family: inherit;
+  font-size: 0.95rem;
 }
 
 footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  color: #aadbd7;
+  color: #88c9c4;
 }
 
 @keyframes shimmer {
@@ -203,7 +208,7 @@ footer {
     <input type="email" name="email" placeholder="Your Email" required>
     <input type="tel" name="phone" placeholder="Your Phone Number" required>
     <textarea name="message" placeholder="Tell us what matters most to you…"></textarea>
-    <button type="submit" onclick="this.innerText='Sending...'; setTimeout(()=>this.innerText='Submit', 2000)">Submit</button>
+    <button type="submit" class="btn" onclick="this.innerText='Sending...'; setTimeout(()=>this.innerText='Submit', 2000)">Submit</button>
   </form>
   <p style="margin-top: 1rem; font-size: 0.9rem; color: #ccc;">By submitting, you agree to our <a href="#" style="color: #88c9c4;">Privacy Policy</a>.</p>
 </section>
@@ -213,16 +218,16 @@ footer {
 </footer>
 
   </div>  <script>
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal");
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          section.classList.add('reveal');
         }
       });
-    }, {
-      threshold: 0.1
-    });
-
-    sections.forEach(section => observer.observe(section));
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
   </script></body></html>
