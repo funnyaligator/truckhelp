@@ -58,7 +58,7 @@
     }
 
     .logo-sub {
-      font-size: 1.1rem;
+      font-size: 1rem;
       letter-spacing: 3px;
       color: var(--text-light);
       font-weight: 600;
@@ -70,9 +70,12 @@
     nav ul {
       list-style: none;
       display: flex;
+      flex-wrap: nowrap;
       gap: 2rem;
       align-items: center;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      padding: 0;
+      margin: 0;
     }
 
     nav a {
@@ -212,9 +215,13 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.2rem 0.3rem;
+      }
       nav ul {
-        justify-content: center;
+        justify-content: space-around;
         gap: 1rem;
       }
 
