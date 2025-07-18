@@ -1,108 +1,160 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.cdnfonts.com/css/harry-potter" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <title>Bellatrix Trucking - Drive with Us</title>
+  <title>Bellatrix Transport</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-blue: #0077B6;
-      --primary-green: #2A9D8F;
-      --accent-blue: #48CAE4;
-      --accent-green: #52B788;
-      --background: #F0F4F8;
-      --text: #333;
-    }* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+      --main-green: #2A9D8F;
+      --main-blue: #48CAE4;
+      --bg-light: #f4f4f4;
+      --text-dark: #1b4332;
+    }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, var(--background), #E0F1F5);
-  color: var(--text);
-  line-height: 1.6;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  background-color: var(--primary-blue);
-  padding: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin: 0.5rem;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
 
-.logo-tile {
-  background-color: var(--primary-blue);
-  border-radius: 12px;
-  padding: 2rem 1rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  margin: 1rem auto;
-  max-width: 400px;
-}
+    header {
+      background-color: white;
+      border-radius: 0 0 1rem 1rem;
+      padding: 1rem;
+      margin: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-.logo {
-  font-family: 'Harry Potter', sans-serif;
-  font-size: 3rem;
-  background: linear-gradient(45deg, #52B788, #2A9D8F, #0077B6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4s infinite;
-}
+    .logo-container {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
 
-@keyframes shimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+    .logo {
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 3rem;
+      background: linear-gradient(145deg, #52B788, #2A9D8F, #0077B6);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s ease infinite;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+    }
 
-.sub-logo {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  color: #fff;
-  letter-spacing: 1px;
-}
+    .sub-logo {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: var(--text-dark);
+    }
 
-.slogan {
-  font-size: 0.9rem;
-  color: #e0f7fa;
-  margin-top: 0.5rem;
-  font-style: italic;
-}
+    .slogan {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
 
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      list-style: none;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--main-green);
+      font-weight: bold;
+    }
+
+    section {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: var(--main-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--main-green), var(--main-blue));
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
   </style>
 </head>
-<body>  <header>
-    <div class="logo-tile">
+
+<body>
+  <header>
+    <div class="logo-container">
       <div class="logo">Bellatrix</div>
       <div class="sub-logo">TRANSPORT</div>
       <p class="slogan">Based in Orlando, Florida – where magic happens ✨</p>
     </div>
-  </header>  <main>
-    <section style="padding: 2rem; text-align: center;">
-      <h2 style="margin-bottom: 1rem; color: var(--primary-green);">Join Our Fleet</h2>
-      <p>Drive with Bellatrix and experience the magic of professional trucking. Flexible routes, competitive pay, and a team that treats you like family.</p>
-    </section><section style="padding: 2rem;">
-  <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: auto;">
-    <input type="text" placeholder="Full Name" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="email" placeholder="Email" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="tel" placeholder="Phone Number" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <textarea placeholder="Tell us about your experience" rows="4" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-    <button type="submit" style="padding: 0.8rem; background-color: var(--accent-green); color: white; border: none; border-radius: 8px; cursor: pointer;">Apply Now</button>
-  </form>
-</section>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#join">Join</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  </main></body>
+  <section id="home">
+    <h2>Welcome</h2>
+    <p>Bellatrix Transport — your gateway to reliable and magical logistics from Florida and beyond.</p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <p>We specialize in expedited freight, local delivery, and long-haul transportation across the U.S.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Founded in Orlando, we combine real-world efficiency with a touch of fantasy. Safety and reliability are our core values.</p>
+  </section>
+
+  <section id="join">
+    <h2>Join the Team</h2>
+    <p>Ready to drive with Bellatrix? Contact us today and start your magical journey.</p>
+    <a class="btn" href="#contact">Apply Now</a>
+  </section>
+</body>
+
 </html>
