@@ -38,8 +38,7 @@ header {
 }
 
 .logo-tile {
-  background: url('bellatrix.jpg') no-repeat center center;
-  background-size: cover;
+  background-color: var(--primary-blue);
   border-radius: 12px;
   padding: 2rem 1rem;
   text-align: center;
@@ -91,5 +90,19 @@ header {
       <div class="sub-logo">TRANSPORT</div>
       <p class="slogan">Based in Orlando, Florida – where magic happens ✨</p>
     </div>
-  </header>  <!-- Остальная часть сайта будет вставлена ниже или сохранена по твоему желанию --></body>
+  </header>  <main>
+    <section style="padding: 2rem; text-align: center;">
+      <h2 style="margin-bottom: 1rem; color: var(--primary-green);">Join Our Fleet</h2>
+      <p>Drive with Bellatrix and experience the magic of professional trucking. Flexible routes, competitive pay, and a team that treats you like family.</p>
+    </section><section style="padding: 2rem;">
+  <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin: auto;">
+    <input type="text" placeholder="Full Name" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="email" placeholder="Email" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="tel" placeholder="Phone Number" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <textarea placeholder="Tell us about your experience" rows="4" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+    <button type="submit" style="padding: 0.8rem; background-color: var(--accent-green); color: white; border: none; border-radius: 8px; cursor: pointer;">Apply Now</button>
+  </form>
+</section>
+
+  </main></body>
 </html>
